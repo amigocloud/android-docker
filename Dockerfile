@@ -21,6 +21,7 @@ LABEL org.label-schema.vcs-url="https://github.com/randr0id/android-docker"
 LABEL org.label-schema.vcs-ref=${VCS_REF}
 
 ENV VERSION_SDK_TOOLS "4333796"
+ENV VERSION_ANDROID_NDK "android-ndk-r19c"
 
 ENV ANDROID_HOME "/sdk"
 ENV PATH "${PATH}:${ANDROID_HOME}/tools"
@@ -50,6 +51,10 @@ RUN curl -s "https://dl.google.com/android/repository/sdk-tools-linux-${VERSION_
     unzip /sdk.zip -d ${ANDROID_HOME} && \
     rm -v /sdk.zip
 
+RUN curl -s "https://dl.google.com/android/repository/${VERSION_ANDROID_NDK}-linux-x86_64.zip" > /ndk.zip && \
+    unzip /ndk.zip -d /sdk && \
+    rm -v /ndk.zip
+    
 RUN mkdir -p "${ANDROID_HOME}/licenses/" && \
     printf "8933bad161af4178b1185d1a37fbf41ea5269c55\\nd56f5187479451eabf01fb78af6dfcb131a6481e" > "${ANDROID_HOME}/licenses/android-sdk-license" && \
     printf "84831b9409646a918e30573bab4c9c91346d8abd\\n504667f4c0de7af1a06de9f4b1727b84351f2910" > "${ANDROID_HOME}/licenses/android-sdk-preview-license"
