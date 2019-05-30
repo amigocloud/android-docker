@@ -52,7 +52,7 @@ RUN curl -s "https://dl.google.com/android/repository/sdk-tools-linux-${VERSION_
     rm -v /sdk.zip
 
 RUN curl -s "https://dl.google.com/android/repository/${VERSION_ANDROID_NDK}-linux-x86_64.zip" > /ndk.zip && \
-    unzip /ndk.zip -d /sdk && \
+    unzip /ndk.zip -d ${ANDROID_HOME} && \
     rm -v /ndk.zip
     
 RUN mkdir -p "${ANDROID_HOME}/licenses/" && \
