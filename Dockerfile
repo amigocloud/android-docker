@@ -76,6 +76,6 @@ COPY wait-for-emulator.sh /utils
 
 # Build tools
 RUN apt-get update && apt-get install build-essential -y && apt-get install file -y && apt-get install apt-utils -y
-RUN apt-get update && apt-get install python aptitude proj-bin libproj-dev sqlite3 libsqlite3-dev pkg-config swig autotools-dev automake ant autoconf autogen libgtk-3-dev libiconv -y 
+RUN apt-get update && apt-get install python aptitude proj-bin libproj-dev sqlite3 libsqlite3-dev pkg-config swig autotools-dev automake ant autoconf autogen libgtk-3-dev -y 
 
 CMD "${ANDROID_HOME}/tools/bin/sdkmanager" --update
